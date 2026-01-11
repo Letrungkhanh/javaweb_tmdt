@@ -39,18 +39,24 @@
     }
   });
 </script>
-    
-    <style >
-    
-    .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    margin-top: 0 !important;
+<style>
+	.site-header {
+    position: relative; /* hoặc static */
 }
-    </style>
+	html, body {
+    margin: 0;
+    padding: 0;
+}
+.site-header {
+    padding-top: 10px;
+}
+.site-header .container {
+    padding-top: 0;
+}
+
+	
+</style>
+    
     <!-- script
     ================================================== -->
     <script src="js/modernizr.js"></script>
@@ -124,45 +130,10 @@
       <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
         <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
       </symbol>
-    </svg>  
+    </svg> 
+    
+      <header id="header" class="site-header text-black bg-light">
 
-    <div class="search-popup">
-        <div class="search-popup-container">
-
-          <form role="search" method="get" class="search-form" action="">
-            <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s" />
-            <button type="submit" class="search-submit"><svg class="search"><use xlink:href="#search"></use></svg></button>
-          </form>
-
-          <h5 class="cat-list-title">Browse Categories</h5>
-          
-          <ul class="cat-list">
-            <li class="cat-list-item">
-              <a href="#" title="Mobile Phones">Mobile Phones</a>
-            </li>
-            <li class="cat-list-item">
-              <a href="#" title="Smart Watches">Smart Watches</a>
-            </li>
-            <li class="cat-list-item">
-              <a href="#" title="Headphones">Headphones</a>
-            </li>
-            <li class="cat-list-item">
-              <a href="#" title="Accessories">Accessories</a>
-            </li>
-            <li class="cat-list-item">
-              <a href="#" title="Monitors">Monitors</a>
-            </li>
-            <li class="cat-list-item">
-              <a href="#" title="Speakers">Speakers</a>
-            </li>
-            <li class="cat-list-item">
-              <a href="#" title="Memory Cards">Memory Cards</a>
-            </li>
-          </ul>
-
-        </div>
-    </div>
-    <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
       <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">
@@ -185,7 +156,8 @@
                 <li class="nav-item">
                   <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/home">Trang chủ</a>
                 </li>
-                 <li class="nav-item">
+                
+               <li class="nav-item">
 				    <a class="nav-link" href="${pageContext.request.contextPath}/products">
 				        Sản phẩm
 				    </a>
@@ -246,36 +218,135 @@
           </div>
         </div>
       </nav>
-    </header>
+    </header> 
+  
+<section class="blog-detail container my-5" >
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
 
-<!-- ====== MAIN CONTENT ====== -->
-<main class="container my-5" style="padding-top: 100px;">
+            <!-- Title -->
+            <h1 class="blog-title mb-3">
+                ${blog.title}
+            </h1>
 
+            <!-- Meta -->
+            <div class="blog-meta mb-4 text-muted">
+                <span>
+                    📂 ${blog.category.title}
+                </span>
+                &nbsp;•&nbsp;
+                <span>
+                    🗓 ${blog.createdDate}
+                </span>
+            </div>
 
-    <!-- Products Section -->
-    <section id="mobile-products">
-        <h2 class="mb-4">Danh sách sản phẩm</h2>
-        <div class="row">
-            <c:forEach var="p" items="${products}">
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100">
-                        <img src="${pageContext.request.contextPath}/images/${p.image}" class="card-img-top" alt="${p.title}">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">
-                           <a href="product/detail?productId=${p.productId}">${p.title}</a>
-                            </h5>
-                            <p class="text-primary mb-2">$${p.priceSale}</p>
-                            <a href="${pageContext.request.contextPath}/cart/add?productId=${p.productId}" class="btn btn-dark mt-auto">Thêm vào giỏ hàng</a>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
+            <!-- Image -->
+            <c:if test="${not empty blog.image}">
+                <img src="${pageContext.request.contextPath}/images/${blog.image}"
+                     class="img-fluid rounded mb-4 blog-image">
+            </c:if>
+
+            <!-- Description -->
+            <p class="blog-description">
+                ${blog.description}
+            </p>
+
+            <!-- Content -->
+            <div class="blog-content">
+                <c:out value="${blog.detail}" escapeXml="false"/>
+            </div>
+
+            <!-- Back -->
+            
+
         </div>
+    </div>
+</section>
+
+
+  <section id="subscribe" class="container-grid padding-large position-relative overflow-hidden">
+      <div class="container">
+        <div class="row">
+          <div class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
+            <div class="col-md-6 col-sm-12">
+              <div class="display-header pe-3">
+                <h2 class="display-7 text-uppercase text-light">Đăng ký ngay!</h2>
+                <p>Nhận tin tức, cập nhật và ưu đãi mới nhất được gửi trực tiếp vào hộp thư đến của bạn.</p>
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-12">
+              <form class="subscription-form validate">
+                <div class="input-group flex-wrap">
+                  <input class="form-control btn-rounded-none" type="email" name="EMAIL" placeholder="Nhập email của bạn ở đây" required="">
+                  <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="subscribe">Đặt mua</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-
-   
-
-</main>
+    <section id="instagram" class="padding-large overflow-hidden no-padding-top">
+      <div class="container">
+        <div class="row">
+          <div class="display-header text-uppercase text-dark text-center pb-3">
+            <h2 class="display-7">Mua sắm ngay trên Instagram của chúng tôi!</h2>
+          </div>
+          <div class="d-flex flex-wrap">
+            <figure class="instagram-item pe-2">
+              <a href="https://templatesjungle.com/" class="image-link position-relative">
+                <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
+                <div class="icon-overlay position-absolute d-flex justify-content-center">
+                  <svg class="instagram">
+                    <use xlink:href="#instagram"></use>
+                  </svg>
+                </div>
+              </a>
+            </figure>
+            <figure class="instagram-item pe-2">
+              <a href="https://templatesjungle.com/" class="image-link position-relative">
+                <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
+                <div class="icon-overlay position-absolute d-flex justify-content-center">
+                  <svg class="instagram">
+                    <use xlink:href="#instagram"></use>
+                  </svg>
+                </div>
+              </a>
+            </figure>
+            <figure class="instagram-item pe-2">
+              <a href="https://templatesjungle.com/" class="image-link position-relative">
+                <img src="images/insta-item3.jpg" alt="instagram" class="insta-image">
+                <div class="icon-overlay position-absolute d-flex justify-content-center">
+                  <svg class="instagram">
+                    <use xlink:href="#instagram"></use>
+                  </svg>
+                </div>
+              </a>
+            </figure>
+            <figure class="instagram-item pe-2">
+              <a href="https://templatesjungle.com/" class="image-link position-relative">
+                <img src="images/insta-item4.jpg" alt="instagram" class="insta-image">
+                <div class="icon-overlay position-absolute d-flex justify-content-center">
+                  <svg class="instagram">
+                    <use xlink:href="#instagram"></use>
+                  </svg>
+                </div>
+              </a>
+            </figure>
+            <figure class="instagram-item pe-2">
+              <a href="https://templatesjungle.com/" class="image-link position-relative">
+                <img src="images/insta-item5.jpg" alt="instagram" class="insta-image">
+                <div class="icon-overlay position-absolute d-flex justify-content-center">
+                  <svg class="instagram">
+                    <use xlink:href="#instagram"></use>
+                  </svg>
+                </div>
+              </a>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
  <footer th:fragment="fooder" id="footer" class="overflow-hidden">
       <div class="container">
         <div class="row">
@@ -386,13 +457,12 @@
       <hr>
     </footer>
   
-  
     <div id="footer-bottom">
       <div class="container">
         <div class="row d-flex flex-wrap justify-content-between">
           <div class="col-md-4 col-sm-6">
             <div class="Shipping d-flex">
-              <p>We ship with:</p>
+              <p>Chúng tôi vận chuyển kèm theo:</p>
               <div class="card-wrap ps-2">
                 <img src="images/dhl.png" alt="visa">
                 <img src="images/shippingcard.png" alt="mastercard">
@@ -401,7 +471,7 @@
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="payment-method d-flex">
-              <p>Payment options:</p>
+              <p>Các phương thức thanh toán:</p>
               <div class="card-wrap ps-2">
                 <img src="images/visa.jpg" alt="visa">
                 <img src="images/mastercard.jpg" alt="mastercard">

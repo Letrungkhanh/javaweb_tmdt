@@ -31,27 +31,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-
-                <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/product">Products</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/cart">
-                            Cart
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
+           
         </div>
     </nav>
 </header>
@@ -114,7 +94,7 @@
 			    <c:otherwise>
 			        <a href="${pageContext.request.contextPath}/login"
 			           class="btn btn-outline-dark">
-			            Login to Buy
+			            Đăng nhập để mua
 			        </a>
 			    </c:otherwise>
 			</c:choose>
@@ -129,7 +109,7 @@
 <section class="py-5 bg-white">
     <div class="container">
 
-        <h4 class="mb-4 text-uppercase fw-bold">Customer Reviews</h4>
+        <h4 class="mb-4 text-uppercase fw-bold">Đánh giá của khách hàng</h4>
 
         <c:if test="${empty reviews}">
             <p class="text-muted">Chưa có đánh giá nào cho sản phẩm này.</p>
@@ -166,7 +146,7 @@
     <div class="container">
 
         <c:if test="${not empty sessionScope.account}">
-            <h4 class="mb-3 text-uppercase fw-bold">Write a Review</h4>
+            <h4 class="mb-3 text-uppercase fw-bold">Viết đánh giá</h4>
 
             <form action="${pageContext.request.contextPath}/product/review"
                   method="post"
@@ -176,19 +156,19 @@
 
                 <!-- STAR -->
                 <div class="mb-3">
-                    <label class="form-label fw-semibold">Rating</label>
+                    <label class="form-label fw-semibold">Sao</label>
                     <select name="star" class="form-select" required>
-                        <option value="5">★★★★★ - Excellent</option>
-                        <option value="4">★★★★ - Good</option>
-                        <option value="3">★★★ - Average</option>
-                        <option value="2">★★ - Poor</option>
-                        <option value="1">★ - Very bad</option>
+                        <option value="5">★★★★★ - Xuất sắc</option>
+                        <option value="4">★★★★ - Tối</option>
+                        <option value="3">★★★ - Trung bình</option>
+                        <option value="2">★★ - Kém</option>
+                        <option value="1">★ - Rất tệ</option>
                     </select>
                 </div>
 
                 <!-- COMMENT -->
                 <div class="mb-3">
-                    <label class="form-label fw-semibold">Your Comment</label>
+                    <label class="form-label fw-semibold">Bình luận của bạn</label>
                     <textarea name="detail"
                               class="form-control"
                               rows="4"
@@ -197,7 +177,7 @@
                 </div>
 
                 <button class="btn btn-dark px-4">
-                    Submit Review
+                    Gửi đánh giá
                 </button>
             </form>
         </c:if>
@@ -205,9 +185,9 @@
         <c:if test="${empty sessionScope.account}">
             <div class="alert alert-warning mt-3">
                 <a href="${pageContext.request.contextPath}/login" class="fw-bold">
-                    Login
+                    Đăng nhập
                 </a>
-                to write a review.
+                 để viết đánh giá.
             </div>
         </c:if>
 

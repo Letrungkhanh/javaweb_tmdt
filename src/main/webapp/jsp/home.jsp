@@ -40,6 +40,58 @@
   });
 </script>
     
+    <style>
+    	#chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0d6efd;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#chat-box {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: white;
+  border: 1px solid #ddd;
+  display: none;
+  flex-direction: column;
+}
+
+#chat-header {
+  background: #0d6efd;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#chat-content {
+  height: 250px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+#chat-input {
+  display: flex;
+}
+
+#chat-input input {
+  flex: 1;
+  padding: 5px;
+}
+
+#chat-input button {
+  padding: 5px 10px;
+}
+    	
+    </style>
     <!-- script
     ================================================== -->
     <script src="js/modernizr.js"></script>
@@ -123,14 +175,14 @@
             <button type="submit" class="search-submit"><svg class="search"><use xlink:href="#search"></use></svg></button>
           </form>
 
-          <h5 class="cat-list-title">Browse Categories</h5>
+          <h5 class="cat-list-title">Duyệt danh mục</h5>
           
           <ul class="cat-list">
             <li class="cat-list-item">
-              <a href="#" title="Mobile Phones">Mobile Phones</a>
+              <a href="#" title="Mobile Phones">Điện thoại</a>
             </li>
             <li class="cat-list-item">
-              <a href="#" title="Smart Watches">Smart Watches</a>
+              <a href="#" title="Smart Watches">Đồng hồ</a>
             </li>
             <li class="cat-list-item">
               <a href="#" title="Headphones">Headphones</a>
@@ -172,28 +224,27 @@
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link me-4 active" href="#billboard">Home</a>
+                  <a class="nav-link me-4 active" href="#billboard">Trang chủ</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#company-services">Services</a>
-                </li>
+                
                <li class="nav-item">
 				    <a class="nav-link" href="${pageContext.request.contextPath}/products">
 				        Sản phẩm
 				    </a>
 				</li>
+				
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#smart-watches">Watches</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/order-history">Lịch sử đặt hàng</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#yearly-sale">Sale</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/cart/view">Giỏ hàng</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-linkhe me-4" href="#latest-blog">Blog</a>
+                  <a class="nav-linkhe me-4" href="#latest-blog">Bài viết</a>
                 </li>
                <li><a href="${pageContext.request.contextPath}/logout"
 						   style="color:red; font-weight:bold;">
-						   Logout
+						   Đăng xuất
 						</a>
 				</li>
 	                
@@ -247,8 +298,8 @@
               <div class="row d-flex align-items-center">
                 <div class="col-md-6">
                   <div class="banner-content">
-                    <h1 class="display-2 text-uppercase text-dark pb-5">Your Products Are Great.</h1>
-                    <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
+                    <h1 class="display-2 text-uppercase text-dark pb-5">Sản phẩm của bạn rất tuyệt.</h1>
+                    <a href="${pageContext.request.contextPath}/products" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Mua sản phẩm</a>
                   </div>
                 </div>
                 <div class="col-md-5">
@@ -264,8 +315,8 @@
               <div class="row d-flex flex-wrap align-items-center">
                 <div class="col-md-6">
                   <div class="banner-content">
-                    <h1 class="display-2 text-uppercase text-dark pb-5">Technology Hack You Won't Get</h1>
-                    <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
+                    <h1 class="display-2 text-uppercase text-dark pb-5">Thủ thuật công nghệ bạn sẽ không bao giờ có được</h1>
+                    <a href="${pageContext.request.contextPath}/products" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Mua sản phẩm</a>
                   </div>
                 </div>
                 <div class="col-md-5">
@@ -300,8 +351,8 @@
                 </svg>
               </div>
               <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">Free delivery</h3>
-                <p>Consectetur adipi elit lorem ipsum dolor sit amet.</p>
+                <h3 class="card-title text-uppercase text-dark">Giao hàng miễn phí</h3>
+               <p>Miễn phí giao hàng toàn quốc cho đơn hàng đủ điều kiện, nhanh chóng và an toàn.</p>
               </div>
             </div>
           </div>
@@ -313,8 +364,8 @@
                 </svg>
               </div>
               <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">Quality guarantee</h3>
-                <p>Dolor sit amet orem ipsu mcons ectetur adipi elit.</p>
+                <h3 class="card-title text-uppercase text-dark">Đảm bảo chất lượng</h3>
+               <p>Sản phẩm được kiểm tra kỹ lưỡng, đảm bảo chất lượng trước khi đến tay khách hàng.</p>
               </div>
             </div>
           </div>
@@ -326,8 +377,8 @@
                 </svg>
               </div>
               <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">Daily offers</h3>
-                <p>Amet consectetur adipi elit loreme ipsum dolor sit.</p>
+                <h3 class="card-title text-uppercase text-dark">Ưu đãi hàng ngày</h3>
+                <p>Cập nhật ưu đãi và khuyến mãi mỗi ngày giúp bạn mua sắm tiết kiệm hơn.</p>
               </div>
             </div>
           </div>
@@ -339,8 +390,8 @@
                 </svg>
               </div>
               <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">100% secure payment</h3>
-                <p>Rem Lopsum dolor sit amet, consectetur adipi elit.</p>
+                <h3 class="card-title text-uppercase text-dark">Thanh toán an toàn 100%</h3>
+               <p>Cam kết bảo mật thông tin và đảm bảo an toàn tuyệt đối cho mọi giao dịch.</p>
               </div>
             </div>
           </div>
@@ -353,9 +404,9 @@
     <div class="container">
         <div class="row">
             <div class="display-header d-flex justify-content-between pb-3">
-                <h2 class="display-7 text-dark text-uppercase">Mobile Products</h2>
+                <h2 class="display-7 text-dark text-uppercase">Điện thoại thông minh</h2>
                 <div class="btn-right">
-                    <a href="shop.html" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+                    <a href="${pageContext.request.contextPath}/products" class="btn btn-medium btn-normal text-uppercase">Đến cửa hàng</a>
                 </div>
             </div>
 
@@ -372,7 +423,7 @@
                                     <div class="cart-button d-flex">
                                         <a href="${pageContext.request.contextPath}/cart/add?productId=${p.productId}"
   										 class="btn btn-medium btn-black">
-  										 Add To Cart
+  										 Thêm vào giỏ hàng
 										</a>
                                     </div>
                                 </div>
@@ -397,9 +448,9 @@
     <div class="container">
         <div class="row">
             <div class="display-header d-flex justify-content-between pb-3">
-                <h2 class="display-7 text-dark text-uppercase">MACBOOK Products</h2>
+                <h2 class="display-7 text-dark text-uppercase">Máy tính</h2>
                 <div class="btn-right">
-                    <a href="shop.html" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+                    <a href="${pageContext.request.contextPath}/products" class="btn btn-medium btn-normal text-uppercase">Đến cửa hàng</a>
                 </div>
             </div>
 
@@ -416,7 +467,7 @@
                                     <div class="cart-button d-flex">
                                         <a href="${pageContext.request.contextPath}/cart/add?productId=${p.productId}"
 										   class="btn btn-black">
-										    Add to Cart
+										    Thêm vào giỏ hàng
 										</a>
 
 
@@ -446,9 +497,9 @@
   <div class="container">
     <div class="row">
       <div class="display-header d-flex justify-content-between pb-3">
-        <h2 class="display-7 text-dark text-uppercase">Latest Posts</h2>
+        <h2 class="display-7 text-dark text-uppercase">Bài viết mới nhất</h2>
         <div class="btn-right">
-          <a href="blogs" class="btn btn-medium btn-normal text-uppercase">Read Blog</a>
+          <a href="blogs" class="btn btn-medium btn-normal text-uppercase">Đọc bài viết</a>
         </div>
       </div>
       <div class="post-grid d-flex flex-wrap justify-content-between">
@@ -465,7 +516,10 @@
                 <span class="meta-category">- ${b.category.title}</span>
               </div>
               <h3 class="card-title">
-                <a href="blog-detail.jsp?id=${b.blogId}">${b.title}</a>
+               <a href="${pageContext.request.contextPath}/blogdetail?id=${b.blogId}">
+				    ${b.title}
+				</a>
+
               </h3>
             </div>
           </div>
@@ -474,6 +528,21 @@
     </div>
   </div>
 </section>
+<div id="chat-button">💬</div>
+
+<div id="chat-box">
+  <div id="chat-header">
+    Tư vấn sản phẩm
+    <span id="close-chat">✖</span>
+  </div>
+
+  <div id="chat-content"></div>
+
+  <div id="chat-input">
+    <input type="text" id="userMessage" placeholder="Nhập câu hỏi..." />
+    <button onclick="sendMessage()">Gửi</button>
+  </div>
+</div>
 
 
 <section id="testimonials" class="position-relative">
@@ -517,15 +586,15 @@
           <div class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
             <div class="col-md-6 col-sm-12">
               <div class="display-header pe-3">
-                <h2 class="display-7 text-uppercase text-light">Subscribe Us Now</h2>
-                <p>Get latest news, updates and deals directly mailed to your inbox.</p>
+                <h2 class="display-7 text-uppercase text-light">Đăng ký ngay!</h2>
+                <p>Nhận tin tức, cập nhật và ưu đãi mới nhất được gửi trực tiếp vào hộp thư đến của bạn.</p>
               </div>
             </div>
             <div class="col-md-5 col-sm-12">
               <form class="subscription-form validate">
                 <div class="input-group flex-wrap">
                   <input class="form-control btn-rounded-none" type="email" name="EMAIL" placeholder="Your email address here" required="">
-                  <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="subscribe">Subscribe</button>
+                  <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="subscribe">Đặt mua</button>
                 </div>
               </form>
             </div>
@@ -537,7 +606,7 @@
       <div class="container">
         <div class="row">
           <div class="display-header text-uppercase text-dark text-center pb-3">
-            <h2 class="display-7">Shop Our Insta</h2>
+            <h2 class="display-7">Mua sắm ngay trên Instagram của chúng tôi!</h2>
           </div>
           <div class="d-flex flex-wrap">
             <figure class="instagram-item pe-2">
@@ -602,7 +671,7 @@
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu">
                   <img src="images/main-logo.png" alt="logo">
-                  <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio erat nullam fringilla.</p>
+                 <p>Chúng tôi cung cấp sản phẩm chất lượng cao cùng dịch vụ uy tín, mang đến trải nghiệm mua sắm an tâm và tiện lợi.</p>
                   <div class="social-links">
                     <ul class="d-flex list-unstyled">
                       <li>
@@ -646,54 +715,54 @@
               </div>
               <div class="col-lg-2 col-sm-6 pb-3">
                 <div class="footer-menu text-uppercase">
-                  <h5 class="widget-title pb-2">Quick Links</h5>
+                  <h5 class="widget-title pb-2">Liên kết nhanh</h5>
                   <ul class="menu-list list-unstyled text-uppercase">
                     <li class="menu-item pb-2">
-                      <a href="#">Home</a>
+                      <a href="#">Trang chủ</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">About</a>
+                      <a href="#">Về chúng tôi</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Shop</a>
+                      <a href="#">Cửa hàng</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Blogs</a>
+                      <a href="#">Bài viết</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Contact</a>
+                      <a href="#">Liên hệ</a>
                     </li>
                   </ul>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu text-uppercase">
-                  <h5 class="widget-title pb-2">Help & Info Help</h5>
+                  <h5 class="widget-title pb-2">Trợ giúp & Thông tin Trợ giúp</h5>
                   <ul class="menu-list list-unstyled">
                     <li class="menu-item pb-2">
-                      <a href="#">Track Your Order</a>
+                      <a href="#">Theo dõi đơn hàng của bạn</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Returns Policies</a>
+                      <a href="#">Chính sách đổi trả</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Shipping + Delivery</a>
+                      <a href="#">Vận chuyển + Giao hàng</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Contact Us</a>
+                      <a href="#">Liên hệ với chúng tôi</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Faqs</a>
+                      <a href="#">Câu hỏi thường gặp</a>
                     </li>
                   </ul>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu contact-item">
-                  <h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
-                  <p>Do you have any queries or suggestions? <a href="mailto:">yourinfo@gmail.com</a>
+                  <h5 class="widget-title text-uppercase pb-2">Liên hệ với chúng tôi</h5>
+                  <p>Bạn có thắc mắc hoặc đề xuất gì không? <a href="mailto:">letrungkhanh@gmail.com</a>
                   </p>
-                  <p>If you need support? Just give us a call. <a href="">+55 111 222 333 44</a>
+                  <p>Nếu bạn cần hỗ trợ? Chỉ cần gọi cho chúng tôi. <a href="">+55 111 222 333 44</a>
                   </p>
                 </div>
               </div>
@@ -709,7 +778,7 @@
         <div class="row d-flex flex-wrap justify-content-between">
           <div class="col-md-4 col-sm-6">
             <div class="Shipping d-flex">
-              <p>We ship with:</p>
+              <p>Chúng tôi vận chuyển kèm theo:</p>
               <div class="card-wrap ps-2">
                 <img src="images/dhl.png" alt="visa">
                 <img src="images/shippingcard.png" alt="mastercard">
@@ -718,7 +787,7 @@
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="payment-method d-flex">
-              <p>Payment options:</p>
+              <p>Các phương thức thanh toán:</p>
               <div class="card-wrap ps-2">
                 <img src="images/visa.jpg" alt="visa">
                 <img src="images/mastercard.jpg" alt="mastercard">
@@ -740,5 +809,50 @@
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="js/plugins.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+   <script>
+  const chatBtn = document.getElementById("chat-button");
+  const chatBox = document.getElementById("chat-box");
+  const closeChat = document.getElementById("close-chat");
+  const chatContent = document.getElementById("chat-content");
+  const input = document.getElementById("userMessage");
+
+  chatBtn.onclick = () => chatBox.style.display = "flex";
+  closeChat.onclick = () => chatBox.style.display = "none";
+
+  function sendMessage() {
+    const message = input.value.trim();
+    if (message === "") return;
+
+    // Hiển thị tin nhắn người dùng
+    chatContent.innerHTML += `<div><b>Bạn:</b> ${message}</div>`;
+    input.value = "";
+
+    fetch("${pageContext.request.contextPath}/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+      body: "message=" + encodeURIComponent(message)
+    })
+    .then(res => res.text())
+    .then(reply => {
+      const formattedReply = reply.split("\n").join("<br>");
+
+      chatContent.innerHTML +=
+        "<div style='color:blue'><b>Tư vấn:</b><br>" +
+        formattedReply +
+        "</div>";
+
+      chatContent.scrollTop = chatContent.scrollHeight;
+    })
+    .catch(() => {
+      chatContent.innerHTML +=
+        "<div style='color:red'>Lỗi kết nối server</div>";
+    });
+  }
+</script>
+
+
+    
   </body>
 </html>

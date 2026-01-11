@@ -35,7 +35,7 @@
 <section class="py-5 bg-light">
     <div class="container">
 
-        <h2 class="text-uppercase mb-4">Your Cart</h2>
+        <h2 class="text-uppercase mb-4">Giỏ hàng của tôi</h2>
         <hr>
 
         <!-- Nếu giỏ hàng trống -->

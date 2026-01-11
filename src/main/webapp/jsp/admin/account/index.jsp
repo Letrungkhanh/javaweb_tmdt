@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Orders</title>
+    <title>Quản lý đơn đặt hàng</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <style>
         body {
@@ -112,54 +112,54 @@
 <c:set var="uri" value="${pageContext.request.requestURI}" />
 
 <div class="sidebar">
-    <h5 class="sidebar-title">Admin Panel</h5>
+    <h5 class="sidebar-title">Người quản trị</h5>
 
     <ul class="sidebar-menu">
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/dashboard"
                class="${uri.contains('/admin/dashboard') ? 'active' : ''}">
-                Dashboard
+                Bảng điều khiển
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/products"
                class="${uri.contains('/admin/products') ? 'active' : ''}">
-                Products
+                Sản phẩm
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/blogs"
                class="${uri.contains('/admin/blogs') ? 'active' : ''}">
-                Blogs
+                Bài viết
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/productcategory"
                class="${uri.contains('/admin/productcategory') ? 'active' : ''}">
-                Categories
+                Danh mục
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/orders"
                class="${uri.contains('/admin/orders') ? 'active' : ''}">
-                Orders
+                Đơn hàng
             </a>
         </li>
         <li>
             <a href="${pageContext.request.contextPath}/admin/accounts"
                class="${uri.contains('/admin/accounts') ? 'active' : ''}">
-                User
+                Người dùng
             </a>
         </li>
 
         <li class="logout">
             <a href="${pageContext.request.contextPath}/logout">
-                Logout
+                Đăng xuất
             </a>
         </li>
 
@@ -168,19 +168,19 @@
 
 
 <div class="content">
-    <h3>User Accounts</h3>
+    <h3>Tài khoản người dùng</h3>
 
     <table class="table table-bordered table-hover mt-3">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Username</th>
-                <th>Full Name</th>
+                <th>Tên người dùng</th>
+                <th>Họ tên</th>
                 <th>Email</th>
-                <th>Phone</th>
-                <th>Status</th>
-                <th>Created Date</th>
-                <th>Actions</th>
+                <th>Điện thoại</th>
+                <th>Trạng thái</th>
+                <th>Ngày đặt</th>
+                <th>Chức năng</th>
             </tr>
         </thead>
         <tbody>
@@ -194,10 +194,10 @@
                     <td>
                         <c:choose>
                             <c:when test="${u.active}">
-                                <span class="badge bg-success">Active</span>
+                                <span class="badge bg-success">Mở</span>
                             </c:when>
                             <c:otherwise>
-                                <span class="badge bg-danger">Locked</span>
+                                <span class="badge bg-danger">Đã khoá</span>
                             </c:otherwise>
                         </c:choose>
                     </td>
@@ -218,7 +218,7 @@
 					
 					                <button class="btn btn-danger btn-sm"
 					                        onclick="return confirm('Khóa tài khoản này?')">
-					                    Lock
+					                    Khoá
 					                </button>
 					            </form>
 					        </c:when>
@@ -233,7 +233,7 @@
 					                <input type="hidden" name="id" value="${u.accountId}"/>
 					
 					                <button class="btn btn-success btn-sm">
-					                    Unlock
+					                    Mở khoá
 					                </button>
 					            </form>
 					        </c:otherwise>

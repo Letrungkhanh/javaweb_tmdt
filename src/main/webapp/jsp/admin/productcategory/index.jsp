@@ -117,47 +117,47 @@
         <li>
             <a href="${pageContext.request.contextPath}/admin/dashboard"
                class="${uri.contains('/admin/dashboard') ? 'active' : ''}">
-                Dashboard
+                Bảng điều khiển
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/products"
                class="${uri.contains('/admin/products') ? 'active' : ''}">
-                Products
+                Sản phẩm
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/blogs"
                class="${uri.contains('/admin/blogs') ? 'active' : ''}">
-                Blogs
+                Bài viết
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/productcategory"
                class="${uri.contains('/admin/productcategory') ? 'active' : ''}">
-                Categories
+                Danh mục
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/orders"
                class="${uri.contains('/admin/orders') ? 'active' : ''}">
-                Orders
+                Đơn hàng
             </a>
         </li>
         <li>
             <a href="${pageContext.request.contextPath}/admin/accounts"
                class="${uri.contains('/admin/accounts') ? 'active' : ''}">
-                User
+                Người dùng
             </a>
         </li>
 
         <li class="logout">
             <a href="${pageContext.request.contextPath}/logout">
-                Logout
+                Đăng xuất
             </a>
         </li>
 
@@ -166,23 +166,23 @@
 
 <!-- Content -->
 <div class="content">
-    <h2>Product Categories</h2>
+    <h2>Danh mục sản phẩm</h2>
     <div class="mb-3">
         <a href="${pageContext.request.contextPath}/admin/productcategory?action=add"
-           class="btn btn-success">Add New Category</a>
+           class="btn btn-success">Thêm mới danh mục</a>
     </div>
 
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Alias</th>
-                <th>Description</th>
+                <th>Tên</th>
+                <th>Bí danh</th>
+                <th>Mô tả</th>
                 <th>Icon</th>
-                <th>Position</th>
-                <th>Active</th>
-                <th>Actions</th>
+                <th>vị trí</th>
+                <th>Trạng thái</th>
+                <th>Chức năng</th>
             </tr>
         </thead>
         <tbody>
@@ -200,16 +200,16 @@
                     <td>${c.position}</td>
                     <td>
                         <c:choose>
-                            <c:when test="${c.active}">Yes</c:when>
+                            <c:when test="${c.active}">OK</c:when>
                             <c:otherwise>No</c:otherwise>
                         </c:choose>
                     </td>
                     <td>
                         <a href="${pageContext.request.contextPath}/admin/productcategory?action=edit&id=${c.categoryId}"
-                           class="btn btn-primary btn-sm">Edit</a>
+                           class="btn btn-primary btn-sm">Chỉnh sửa</a>
                         <a href="${pageContext.request.contextPath}/admin/productcategory?action=delete&id=${c.categoryId}"
                            class="btn btn-danger btn-sm"
-                           onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
+                           onclick="return confirm('Are you sure you want to delete this category?');">Xoá</a>
                     </td>
                 </tr>
             </c:forEach>

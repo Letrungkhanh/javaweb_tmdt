@@ -117,47 +117,47 @@
         <li>
             <a href="${pageContext.request.contextPath}/admin/dashboard"
                class="${uri.contains('/admin/dashboard') ? 'active' : ''}">
-                Dashboard
+                Bảng điều khiển
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/products"
                class="${uri.contains('/admin/products') ? 'active' : ''}">
-                Products
+                Sản phẩm
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/blogs"
                class="${uri.contains('/admin/blogs') ? 'active' : ''}">
-                Blogs
+                Bài viết
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/productcategory"
                class="${uri.contains('/admin/productcategory') ? 'active' : ''}">
-                Categories
+                Danh mục
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/orders"
                class="${uri.contains('/admin/orders') ? 'active' : ''}">
-                Orders
+                Đơn hàng
             </a>
         </li>
         <li>
             <a href="${pageContext.request.contextPath}/admin/accounts"
                class="${uri.contains('/admin/accounts') ? 'active' : ''}">
-                User
+                Người dùng
             </a>
         </li>
 
         <li class="logout">
             <a href="${pageContext.request.contextPath}/logout">
-                Logout
+                Đăng xuất
             </a>
         </li>
 
@@ -169,7 +169,7 @@
     <h2>Product Management</h2>
 <a href="${pageContext.request.contextPath}/admin/products?action=add"
    class="btn btn-success mb-3">
-    + Add Product
+    Thêm sản phẩm
 </a>
 
     <!-- Danh sách sản phẩm -->
@@ -177,10 +177,10 @@
         <thead class="table-dark">
         <tr>
             <th>ID</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Actions</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Chức năng</th>
         </tr>
         </thead>
         <tbody>
@@ -193,8 +193,8 @@
                 <td>
                
 				                
-                    <a href="${pageContext.request.contextPath}/admin/products?action=edit&id=${p.productId}" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="${pageContext.request.contextPath}/admin/products?action=delete&id=${p.productId}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                    <a href="${pageContext.request.contextPath}/admin/products?action=edit&id=${p.productId}" class="btn btn-warning btn-sm">Sửa</a>
+                    <a href="${pageContext.request.contextPath}/admin/products?action=delete&id=${p.productId}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Xoá</a>
                 </td>
             </tr>
         </c:forEach>

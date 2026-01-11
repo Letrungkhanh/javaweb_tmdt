@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin - Blog Management</title>
+    <title>Quản lý bài viết</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <style>
         body {
@@ -117,46 +117,46 @@
         <li>
             <a href="${pageContext.request.contextPath}/admin/dashboard"
                class="${uri.contains('/admin/dashboard') ? 'active' : ''}">
-                Dashboard
+                Bảng điều khiển
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/products"
                class="${uri.contains('/admin/products') ? 'active' : ''}">
-                Products
+                Sản phẩm
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/blogs"
                class="${uri.contains('/admin/blogs') ? 'active' : ''}">
-                Blogs
+                Bài viết
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/productcategory"
                class="${uri.contains('/admin/productcategory') ? 'active' : ''}">
-                Categories
+                Danh mục
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/orders"
                class="${uri.contains('/admin/orders') ? 'active' : ''}">
-                Orders
+                Đơn hàng
             </a>
         </li>
  		<li>
             <a href="${pageContext.request.contextPath}/admin/accounts"
                class="${uri.contains('/admin/accounts') ? 'active' : ''}">
-                User
+                Người dùng
             </a>
         </li>
         <li class="logout">
             <a href="${pageContext.request.contextPath}/logout">
-                Logout
+                Đăng xuất
             </a>
         </li>
 
@@ -166,11 +166,11 @@
 
 <!-- Content -->
 <div class="content">
-    <h2>Blog Management</h2>
+    <h2>Quản lý bài viết</h2>
 
     <a href="${pageContext.request.contextPath}/admin/blogs?action=add"
        class="btn btn-success mb-3">
-        + Add Blog
+        + Thêm bài viết
     </a>
 
     <!-- Danh sách blog -->
@@ -178,11 +178,11 @@
         <thead class="table-dark">
         <tr>
             <th>ID</th>
-            <th>Title</th>
-            <th>Alias</th>
-            <th>Active</th>
-            <th>Created Date</th>
-            <th>Actions</th>
+            <th>Tên</th>
+            <th>Bí danh</th>
+            <th>Trạng thái</th>
+            <th>Ngày tạo</th>
+            <th>Chức năng</th>
         </tr>
         </thead>
         <tbody>
@@ -194,10 +194,10 @@
                 <td>
                     <c:choose>
                         <c:when test="${b.active}">
-                            <span class="badge bg-success">Active</span>
+                            <span class="badge bg-success">Mở</span>
                         </c:when>
                         <c:otherwise>
-                            <span class="badge bg-secondary">Hidden</span>
+                            <span class="badge bg-secondary">Ẩn</span>
                         </c:otherwise>
                     </c:choose>
                 </td>
@@ -205,13 +205,13 @@
                 <td>
                     <a href="${pageContext.request.contextPath}/admin/blogs?action=edit&id=${b.blogId}"
                        class="btn btn-warning btn-sm">
-                        Edit
+                        Chỉnh sửa
                     </a>
 
                     <a href="${pageContext.request.contextPath}/admin/blogs?action=delete&id=${b.blogId}"
                        class="btn btn-danger btn-sm"
                        onclick="return confirm('Delete this blog?');">
-                        Delete
+                        Xoá
                     </a>
                 </td>
             </tr>

@@ -54,6 +54,34 @@ public class BlogDAO extends DBContext {
 	    }
 	    return list;
 	}
+	public Blog getBlogDetail(int blogId) {
+	    String sql = """
+	        SELECT b.*, c.BlogCategoryId, c.Title AS CategoryTitle
+	        FROM tb_Blog b
+	        LEFT JOIN tb_BlogCategory c ON b.CategoryId = c.BlogCategoryId
+	        WHERE b.BlogId = ? AND b.IsActive = 1
+	    """;
+
+	    try (PreparedStatement ps = connection.prepareStatement(sql)) {
+	        ps.setInt(1, blogId);
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            Blog b = mapResultSet(rs);
+
+	            BlogCategory cat = new BlogCategory();
+	            cat.setBlogCategoryId(rs.getInt("BlogCategoryId"));
+	            cat.setTitle(rs.getString("CategoryTitle"));
+
+	            b.setCategory(cat);
+	            return b;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return null;
+	}
+
 
 	public List<Blog> getAllBlogsForAdmin() {
 	    List<Blog> list = new ArrayList<>();

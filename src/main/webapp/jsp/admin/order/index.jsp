@@ -117,47 +117,47 @@
         <li>
             <a href="${pageContext.request.contextPath}/admin/dashboard"
                class="${uri.contains('/admin/dashboard') ? 'active' : ''}">
-                Dashboard
+                Bảng điều khiển
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/products"
                class="${uri.contains('/admin/products') ? 'active' : ''}">
-                Products
+                Sản phẩm
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/blogs"
                class="${uri.contains('/admin/blogs') ? 'active' : ''}">
-                Blogs
+                Bài viết
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/productcategory"
                class="${uri.contains('/admin/productcategory') ? 'active' : ''}">
-                Categories
+                Danh mục
             </a>
         </li>
 
         <li>
             <a href="${pageContext.request.contextPath}/admin/orders"
                class="${uri.contains('/admin/orders') ? 'active' : ''}">
-                Orders
+                Đơn hàng
             </a>
         </li>
         <li>
             <a href="${pageContext.request.contextPath}/admin/accounts"
                class="${uri.contains('/admin/accounts') ? 'active' : ''}">
-                User
+                Người dùng
             </a>
         </li>
 
         <li class="logout">
             <a href="${pageContext.request.contextPath}/logout">
-                Logout
+                Đăng xuất
             </a>
         </li>
 
@@ -167,21 +167,21 @@
 
 <!-- Content -->
 <div class="content">
-    <h2>Orders</h2>
+    <h2>Đơn hàng</h2>
     <table class="table table-bordered table-hover mt-3">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Code</th>
-                <th>Customer</th>
-                <th>Phone</th>
+                <th>Mã đơn</th>
+                <th>Người mua</th>
+                <th>Điện thoại</th>
                 <th>Email</th>
-                <th>Address</th>
-                <th>Total</th>
-                <th>Quantity</th>
-                <th>Status</th>
-                <th>Created Date</th>
-                <th>Actions</th>
+                <th>Địa chỉ</th>
+                <th>Tổng</th>
+                <th>Số lượng</th>
+                <th>Trạng thái</th>
+                <th>Ngày mua</th>
+                <th>Chức năng</th>
             </tr>
         </thead>
         <tbody>
@@ -207,9 +207,9 @@
 
                     <td>${order.createdDate}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/admin/orders?action=view&id=${order.orderId}" class="btn btn-info btn-sm mb-1">View</a>
+                        <a href="${pageContext.request.contextPath}/admin/orders?action=view&id=${order.orderId}" class="btn btn-info btn-sm mb-1">Xem</a>
                         <a href="${pageContext.request.contextPath}/admin/orders?action=delete&id=${order.orderId}" 
-                           onclick="return confirm('Are you sure?');" class="btn btn-danger btn-sm">Delete</a>
+                           onclick="return confirm('Are you sure?');" class="btn btn-danger btn-sm">Xoá</a>
                     </td>
                 </tr>
             </c:forEach>

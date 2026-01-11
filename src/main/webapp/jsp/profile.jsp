@@ -24,60 +24,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="${pageContext.request.contextPath}/home">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="${pageContext.request.contextPath}/product">Products</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="${pageContext.request.contextPath}/cart/view">Cart</a>
-                </li>
-
-                <c:choose>
-                    <c:when test="${not empty sessionScope.account}">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle fw-semibold"
-                               href="#" role="button" data-bs-toggle="dropdown">
-                                ${sessionScope.account.fullName}
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li>
-                                    <a class="dropdown-item"
-                                       href="${pageContext.request.contextPath}/profile">
-                                        👤 Profile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item"
-                                       href="${pageContext.request.contextPath}/logout">
-                                        🚪 Logout
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </c:when>
-
-                    <c:otherwise>
-                        <li class="nav-item">
-                            <a class="btn btn-dark ms-3"
-                               href="${pageContext.request.contextPath}/login">
-                                Login
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-
-            </ul>
-        </div>
+  
     </div>
 </nav>
 <div class="container py-5">
@@ -91,7 +38,7 @@
                 <!-- HEADER -->
                 <div class="card-header bg-dark text-white rounded-top-4">
                     <h4 class="mb-0">
-                        👤 Thông tin cá nhân
+                        Thông tin cá nhân
                     </h4>
                 </div>
 

@@ -1,10 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Product Category</title>
+    <title>Quản lý đơn đặt hàng</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <style>
         body {
@@ -21,7 +23,9 @@
             color: white;
             text-decoration: none;
         }
-        .sidebar a.active,
+        .sidebar a.active {
+            background-color: #495057;
+        }
         .sidebar a:hover {
             background-color: #495057;
         }
@@ -29,26 +33,142 @@
             flex-grow: 1;
             padding: 20px;
         }
+        body {
+		    min-height: 100vh;
+		    display: flex;
+		    background: #f4f6f9;
+		    font-family: Arial, sans-serif;
+		}
+		
+		/* Sidebar */
+		.sidebar {
+		    width: 220px;
+		    background: #ffffff;
+		    border-right: 1px solid #e0e0e0;
+		    padding: 20px 15px;
+		}
+		
+		.sidebar-title {
+		    font-size: 16px;
+		    font-weight: 600;
+		    margin-bottom: 20px;
+		    color: #333;
+		}
+		
+		/* Menu */
+		.sidebar-menu {
+		    list-style: none;
+		    padding: 0;
+		    margin: 0;
+		}
+		
+		.sidebar-menu li {
+		    margin-bottom: 6px;
+		}
+		
+		.sidebar-menu a {
+		    display: block;
+		    padding: 10px 12px;
+		    color: #444;
+		    text-decoration: none;
+		    border-radius: 6px;
+		    transition: all 0.2s ease;
+		    font-size: 14px;
+		}
+		
+		.sidebar-menu a:hover {
+		    background-color: #f0f2f5;
+		}
+		
+		.sidebar-menu a.active {
+		    background-color: #e9ecef;
+		    font-weight: 600;
+		    color: #000;
+		}
+		
+		/* Logout */
+		.sidebar-menu .logout {
+		    margin-top: 25px;
+		}
+		
+		.sidebar-menu .logout a {
+		    color: #c0392b;
+		}
+		
+		.sidebar-menu .logout a:hover {
+		    background-color: #fdecea;
+		}
+		
+		/* Content */
+		.content {
+		    flex-grow: 1;
+		    padding: 25px;
+		    background: #f4f6f9;
+		}
+        
     </style>
 </head>
 <body>
+<c:set var="uri" value="${pageContext.request.requestURI}" />
 
-<!-- Sidebar -->
-<div class="sidebar d-flex flex-column p-3">
-    <h4 class="mb-4">Admin Panel</h4>
-    <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-            <a href="${pageContext.request.contextPath}/admin/productcategory" class="nav-link active">
-                Product Categories
+<div class="sidebar">
+    <h5 class="sidebar-title">Người quản trị</h5>
+
+    <ul class="sidebar-menu">
+
+        <li>
+            <a href="${pageContext.request.contextPath}/admin/dashboard"
+               class="${uri.contains('/admin/dashboard') ? 'active' : ''}">
+                Bảng điều khiển
             </a>
         </li>
-        <li class="nav-item"><a href="${pageContext.request.contextPath}/admin/products" class="nav-link">Products</a></li>
+
+        <li>
+            <a href="${pageContext.request.contextPath}/admin/products"
+               class="${uri.contains('/admin/products') ? 'active' : ''}">
+                Sản phẩm
+            </a>
+        </li>
+
+        <li>
+            <a href="${pageContext.request.contextPath}/admin/blogs"
+               class="${uri.contains('/admin/blogs') ? 'active' : ''}">
+                Bài viết
+            </a>
+        </li>
+
+        <li>
+            <a href="${pageContext.request.contextPath}/admin/productcategory"
+               class="${uri.contains('/admin/productcategory') ? 'active' : ''}">
+                Danh mục
+            </a>
+        </li>
+
+        <li>
+            <a href="${pageContext.request.contextPath}/admin/orders"
+               class="${uri.contains('/admin/orders') ? 'active' : ''}">
+                Đơn hàng
+            </a>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/admin/accounts"
+               class="${uri.contains('/admin/accounts') ? 'active' : ''}">
+                Người dùng
+            </a>
+        </li>
+
+        <li class="logout">
+            <a href="${pageContext.request.contextPath}/logout">
+                Đăng xuất
+            </a>
+        </li>
+
     </ul>
 </div>
 
 <!-- Content -->
 <div class="content">
-    <h2>Edit Product Category</h2>
+    <h2>Chỉnh sửa danh mục sản phẩm</h2>
 
     <form action="${pageContext.request.contextPath}/admin/productcategory" method="post" class="mt-4">
 
@@ -58,33 +178,33 @@
 
         <!-- Title -->
         <div class="mb-3">
-            <label class="form-label">Title</label>
+            <label class="form-label">Tiêu đề</label>
             <input type="text" name="title" class="form-control"
                    value="${category.title}" required>
         </div>
 
         <!-- Alias -->
         <div class="mb-3">
-            <label class="form-label">Alias</label>
+            <label class="form-label">Bí danh</label>
             <input type="text" name="alias" class="form-control"
                    value="${category.alias}">
         </div>
 
         <!-- Description -->
         <div class="mb-3">
-            <label class="form-label">Description</label>
+            <label class="form-label">Mô tả</label>
             <textarea name="description" class="form-control" rows="2">${category.description}</textarea>
         </div>
 
         <!-- Icon -->
         <div class="mb-3">
-            <label class="form-label">Icon</label>
+            <label class="form-label">Biểu tượng</label>
             <input type="text" name="icon" class="form-control" value="${category.icon}">
         </div>
 
         <!-- Position -->
         <div class="mb-3">
-            <label class="form-label">Position</label>
+            <label class="form-label">Vị trí</label>
             <input type="number" name="position" class="form-control" 
                    value="${category.position != null ? category.position : 0}">
         </div>
@@ -98,9 +218,9 @@
 
         <!-- Buttons -->
         <div class="mt-4">
-            <button type="submit" class="btn btn-primary">Update Category</button>
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
             <a href="${pageContext.request.contextPath}/admin/productcategory"
-               class="btn btn-secondary ms-2">Cancel</a>
+               class="btn btn-secondary ms-2">Thoát</a>
         </div>
     </form>
 </div>

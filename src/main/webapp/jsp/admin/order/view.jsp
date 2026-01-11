@@ -20,24 +20,24 @@
 <div class="container my-4">
 
     <!-- TITLE -->
-    <h3 class="mb-4">📦 Order Details</h3>
+    <h3 class="mb-4">📦 Chi tiết đơn hàng</h3>
 
     <!-- ORDER INFO -->
     <div class="card mb-4 shadow-sm">
         <div class="card-header bg-primary text-white">
-            Order Information
+            Thông tin đơn hàng
         </div>
         <div class="card-body row">
             <div class="col-md-6">
-                <p><strong>Order Code:</strong> ${order.code}</p>
-                <p><strong>Customer:</strong> ${order.customerName}</p>
-                <p><strong>Phone:</strong> ${order.phone}</p>
+                <p><strong>Mã đơn hàng:</strong> ${order.code}</p>
+                <p><strong>Người đặt:</strong> ${order.customerName}</p>
+                <p><strong>Số điện thoại:</strong> ${order.phone}</p>
             </div>
             <div class="col-md-6">
-                <p><strong>Address:</strong> ${order.address}</p>
-                <p><strong>Total Items:</strong> ${order.quantity}</p>
+                <p><strong>Dịa chỉ:</strong> ${order.address}</p>
+                <p><strong>Tổng số lượng:</strong> ${order.quantity}</p>
                 <p>
-                    <strong>Total Amount:</strong>
+                    <strong>Tổng tiền:</strong>
                     <span class="text-danger fw-bold">
                         <fmt:formatNumber value="${order.totalAmount}" type="currency"/>
                     </span>
@@ -49,16 +49,16 @@
     <!-- ORDER DETAILS TABLE -->
     <div class="card shadow-sm">
         <div class="card-header bg-dark text-white">
-            Product List
+            Danh sách đơn hàng
         </div>
         <div class="card-body p-0">
             <table class="table table-hover table-bordered mb-0 align-middle text-center">
                 <thead class="table-secondary">
                     <tr>
-                        <th>Product</th>
-                        <th width="120">Price</th>
-                        <th width="100">Quantity</th>
-                        <th width="150">Subtotal</th>
+                        <th>Sản phẩm</th>
+                        <th width="120">Giá</th>
+                        <th width="100">Số lượng</th>
+                        <th width="150">Tổng đơn hàng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,7 +130,7 @@
 
         <a href="${pageContext.request.contextPath}/admin/orders"
            class="btn btn-secondary">
-            Back to Order List
+            Quay lại danh sách đơn hàng
         </a>
     </div>
 </div>
